@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     format: ['webp']
   },
   devtools: { enabled: true },
-  css: ['~/assets/css/global.css', '~/assets/css/main.css'],
+  css: ['~/assets/css/main.css'],
   compatibilityDate: '2025-11-11',
   i18n: {
     defaultLocale: 'en',

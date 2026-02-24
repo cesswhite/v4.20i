@@ -5,26 +5,26 @@
   },
   "home": {
     "title": "v.420i",
-    "subtitle": "Opinionated Nuxt 4 Starter Template",
-    "tagline": "Minimal, Fast, and Developer-Friendly",
+    "subtitle": "Template for Nuxt 4",
+    "tagline": "Simple, fast and easy to use.",
     "name": "Name",
     "namePlaceholder": "Name",
-    "enter": "Enter",
+    "enter": "Try",
     "toastOops": "Oops!",
-    "toastPleaseName": "Please enter your name!",
+    "toastPleaseName": "Please enter your name.",
     "toastHey": "Hey!",
-    "toastClicked": "Hello! You just clicked the button!"
+    "toastClicked": "Hello! You just clicked the button."
   },
   "about": {
     "hello": "Hello, {name}!",
-    "description": "v.420i is a carefully crafted Nuxt starter template with i18n (en, es, pt), designed with a focus on minimalism, performance, and developer experience.",
+    "description": "v.420i is a Nuxt 4 template with the i18n module integrated and configured for Spanish, English and Portuguese, focused on minimalism, performance and developer experience.",
     "developedBy": "Developed with love by",
     "backToHome": "Back to Home"
   },
   "seo": {
-    "homeTitle": "v.420i | Opinionated Nuxt 4 Starter Template",
-    "homeDescription": "Opinionated Nuxt 4 Starter Template. Minimal, Fast, and Developer-Friendly.",
+    "homeTitle": "v.420i | Nuxt 4 Template",
+    "homeDescription": "Nuxt 4 template. Simple, fast and easy to use.",
     "aboutTitle": "v.420i | About",
-    "aboutDescription": "About this Nuxt 4 starter template. Minimal, Fast, and Developer-Friendly."
+    "aboutDescription": "About this Nuxt 4 template. Simple, fast and easy to use."
   }
 }

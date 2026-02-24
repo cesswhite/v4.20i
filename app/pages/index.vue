@@ -45,16 +45,20 @@ const toast = useToast()
 function handleGoToAbout() {
   if (name.value) {
     toast.add({
+      id: 'success-toast',
       title: t('home.toastHey'),
       description: t('home.toastClicked'),
-      color: 'success'
+      color: 'success',
+      duration: 0
     })
     navigateTo(localePath('/about'))
   } else {
     toast.add({
+      id: 'warning-name-required',
       title: t('home.toastOops'),
       description: t('home.toastPleaseName'),
-      color: 'warning'
+      color: 'warning',
+      duration: 0
     })
   }
 }

@@ -5,11 +5,11 @@
   },
   "home": {
     "title": "v.420i",
-    "subtitle": "Plantilla Nuxt 4 con opinión",
-    "tagline": "Mínima, rápida y amigable para desarrolladores",
+    "subtitle": "Template para Nuxt 4",
+    "tagline": "Simple, rápido y fácil de usar.",
     "name": "Nombre",
     "namePlaceholder": "Nombre",
-    "enter": "Entrar",
+    "enter": "Prueba",
     "toastOops": "Ups!",
     "toastPleaseName": "Por favor escribe tu nombre.",
     "toastHey": "Hola!",
@@ -17,14 +17,14 @@
   },
   "about": {
     "hello": "Hola, {name}!",
-    "description": "v.420i es una plantilla Nuxt con i18n (en, es, pt), centrada en minimalismo, rendimiento y experiencia de desarrollo.",
+    "description": "v.420i es un template de Nuxt 4 con el modulo i18n integrado y configurado en los idiomas Español, Inglés y Portugués, centrada en minimalismo, rendimiento y experiencia de desarrollo.",
     "developedBy": "Desarrollado con cariño por",
     "backToHome": "Volver al inicio"
   },
   "seo": {
     "homeTitle": "v.420i | Plantilla Nuxt 4",
-    "homeDescription": "Plantilla Nuxt 4. Mínima, rápida y amigable para desarrolladores.",
+    "homeDescription": "Plantilla Nuxt 4. Simple, rápida y fácil de usar.",
     "aboutTitle": "v.420i | Acerca",
-    "aboutDescription": "Acerca de esta plantilla Nuxt 4. Mínima, rápida y amigable para desarrolladores."
+    "aboutDescription": "Acerca de esta plantilla Nuxt 4. Simple, rápida y fácil de usar."
   }
 }
