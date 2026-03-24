@@ -4,7 +4,7 @@
     "about": "Sobre"
   },
   "home": {
-    "title": "v.420i",
+    "title": "v4.20i",
     "subtitle": "Template para Nuxt 4",
     "tagline": "Simples, rápido e fácil de usar.",
     "name": "Nome",
@@ -17,14 +17,14 @@
   },
   "about": {
     "hello": "Olá, {name}!",
-    "description": "v.420i é um template Nuxt 4 com o módulo i18n integrado e configurado nos idiomas Espanhol, Inglês e Português, focado em minimalismo, desempenho e experiência do desenvolvedor.",
+    "description": "v4.20i é um template Nuxt 4 com o módulo i18n integrado e configurado nos idiomas Espanhol, Inglês e Português, focado em minimalismo, desempenho e experiência do desenvolvedor.",
     "developedBy": "Desenvolvido com carinho por",
     "backToHome": "Voltar ao início"
   },
   "seo": {
-    "homeTitle": "v.420i | Template Nuxt 4",
+    "homeTitle": "v4.20i | Template Nuxt 4",
     "homeDescription": "Template Nuxt 4. Simples, rápido e fácil de usar.",
-    "aboutTitle": "v.420i | Sobre",
+    "aboutTitle": "v4.20i | Sobre",
     "aboutDescription": "Sobre este template Nuxt 4. Simples, rápido e fácil de usar."
   }
 }
