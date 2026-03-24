@@ -16,9 +16,7 @@
     "@nuxtjs/i18n": "10.2.4",
     "@pinia/nuxt": "0.11.3",
     "nuxt": "4.4.2",
-    "pinia": "3.0.4",
-    "vue": "latest",
-    "vue-router": "latest"
+    "pinia": "3.0.4"
   },
   "devDependencies": {
     "typescript": "6.0.2",
