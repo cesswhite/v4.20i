@@ -43,17 +43,5 @@ const { name } = storeToRefs(useIndexStore())
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-useSeoMeta({
-  title: () => t('seo.aboutTitle'),
-  ogTitle: () => t('seo.aboutTitle'),
-  description: () => t('seo.aboutDescription'),
-  ogDescription: () => t('seo.aboutDescription'),
-  ogImage: 'https://res.cloudinary.com/dpvsklksg/image/upload/ecov4/v420i-og-image.webp',
-  ogUrl: 'https://v420i.ecostudios.dev/about',
-  twitterImage: 'https://res.cloudinary.com/dpvsklksg/image/upload/ecov4/v420i-og-image.webp',
-  twitterTitle: () => t('seo.aboutTitle'),
-  twitterDescription: () => t('seo.aboutDescription'),
-  ogImageWidth: 1200,
-  ogImageHeight: 630
-})
+useSiteSeo('about')
 </script>

@@ -63,18 +63,5 @@ function handleGoToAbout() {
   }
 }
 
-useSeoMeta({
-  title: () => t('seo.homeTitle'),
-  ogTitle: () => t('seo.homeTitle'),
-  description: () => t('seo.homeDescription'),
-  ogDescription: () => t('seo.homeDescription'),
-  ogImage: 'https://res.cloudinary.com/dpvsklksg/image/upload/ecov4/v420i-og-image.webp',
-  twitterCard: 'summary_large_image',
-  ogUrl: 'https://v420i.ecostudios.dev/',
-  twitterImage: 'https://res.cloudinary.com/dpvsklksg/image/upload/ecov4/v420i-og-image.webp',
-  twitterTitle: () => t('seo.homeTitle'),
-  twitterDescription: () => t('seo.homeDescription'),
-  ogImageWidth: 1200,
-  ogImageHeight: 630
-})
+useSiteSeo('home')
 </script>
