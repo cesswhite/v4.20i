@@ -1,0 +1,19 @@
+# v4.20i
+
+> v4.20i is a Nuxt starter template with English, Spanish and Portuguese support, by Eco Development Studios.
+
+The public demo has a home page with a name input and an About page, along with language and theme controls. It demonstrates locale-aware navigation and translated interface text.
+
+## Public pages
+
+- [Home in English](https://v420i.ecostudios.dev/)
+- [About in English](https://v420i.ecostudios.dev/about)
+- [Inicio en español](https://v420i.ecostudios.dev/es)
+- [Acerca de en español](https://v420i.ecostudios.dev/es/about)
+- [Início em português](https://v420i.ecostudios.dev/pt)
+- [Sobre em português](https://v420i.ecostudios.dev/pt/about)
+- [Sitemap](https://v420i.ecostudios.dev/sitemap.xml)
+
+## Publisher
+
+- [Eco Development Studios](https://www.ecostudios.dev/)

@@ -1,3 +1,5 @@
+Guia técnico e comandos verificados: [docs/REPOSITORY_GUIDE.md](docs/REPOSITORY_GUIDE.md). Instruções para agentes: [AGENTS.md](AGENTS.md). Use esse guia como referência atual de instalação e arquitetura.
+
 ![v.420i_cover_image](https://github.com/user-attachments/assets/db3b68fb-4677-4326-96b5-8a24e92a91a4)
 
 # v.420i: Nuxt 4 Starter com i18n
@@ -28,7 +30,7 @@ Este repo é **i18n-first**. Inclui três locales:
 - **Traduções:** `i18n/locales/` — um arquivo JSON por locale (`en.json`, `es.json`, `pt.json`) com as mesmas chaves.
 - **Rotas:** O locale padrão não tem prefixo na URL; os demais têm (ex.: `/es/about`, `/pt/about`). A primeira visita pode redirecionar para o idioma do navegador; o locale escolhido é salvo em um cookie.
 - **Links:** Use `localePath('/caminho')` para manter o locale atual; use `switchLocalePath('es')` (ou outro código) para links que trocam de idioma.
-- **SEO:** O layout usa `useLocaleHead` para o idioma do documento e as tags hreflang; títulos e descrições usam chaves de tradução.
+- **SEO:** `app/app.vue` usa `useLocaleHead` para o idioma do documento e as tags hreflang; títulos e descrições usam chaves de tradução.
 
 ## Recursos
 
@@ -44,45 +46,21 @@ Este repo é **i18n-first**. Inclui três locales:
 
 ## Início rápido
 
-**Opção 1 – CLI (recomendado)**  
-Gerar um projeto sem clonar. Requer [Bun](https://bun.sh/) ou npm/yarn com `npx`/`yarn dlx`:
+Use Bun e Node 22.12+ compatível com Nuxt. As versões atuais estão em `package.json` e `bun.lock`. Clone diretamente este template com i18n:
 
 ```sh
-bunx v420
+git clone https://github.com/cesswhite/v4.20i.git
+cd v4.20i
+bun install --frozen-lockfile
+bun run dev
 ```
-
-Isso executa a CLI v420 (template base) para gerar um projeto no diretório atual (ou em um caminho indicado). Não é preciso clonar o repo nem instalar dependências manualmente.
-
-**Opção 2 – Clonar e rodar localmente**
-
-### Pré-requisitos
-
-- **Node.js** ≥ 18.x
-- **Bun** (recomendado) ou npm/yarn
-
-### Instalação
 
 ```sh
-git clone https://github.com/{username}/v.420i.git
-cd v.420i
-bun i
+bun run build
+bun run preview
 ```
 
-### Desenvolvimento
-
-```sh
-bun dev
-```
-
-O servidor de desenvolvimento roda em `http://localhost:3000` com HMR. Abra `/`, `/es` ou `/pt` para ver a app em cada idioma.
-
-### Build de produção
-
-```sh
-bun build
-```
-
-A saída fica em `.output`. Sirva com `bun run preview` ou faça deploy dos arquivos gerados no seu host.
+O servidor de desenvolvimento normalmente usa `http://localhost:3000`; confira `/`, `/es` e `/pt`. A saída de produção fica em `.output`. Consulte o [guia técnico](docs/REPOSITORY_GUIDE.md) para verificar tipos e SEO.
 
 ## Estrutura do projeto
 
@@ -107,7 +85,7 @@ i18n/
 
 O template inclui um store Pinia preparado para **hidratação SSR**:
 
-- **Hidratação:** O estado inicial não é serializado; os valores são lidos no cliente (ex.: de `localStorage`) após a hidratação.
+- **Hidratação:** O store reconecta `useLocalStorage` durante a hidratação do cliente; consulte `app/stores/index.ts`.
 - **SSR:** Seguro para renderização no servidor com estado apenas no cliente.
 - **TypeScript:** Usa `@ts-expect-error` onde necessário por [limitações de tipagem do Pinia](https://github.com/vuejs/pinia/issues/2086#issuecomment-1493942501).
 
@@ -117,23 +95,15 @@ Consulte a [documentação do Pinia SSR](https://pinia.vuejs.org/cookbook/compos
 
 - **Onde ficam as traduções:** Em `i18n/locales/` na raiz do projeto — um JSON por locale (`en.json`, `es.json`, `pt.json`) com as mesmas chaves.
 - **Mudar de idioma:** Use os links de idioma no header do layout; eles levam à mesma página em outro locale.
-- **Adicionar um idioma:** Adicione uma entrada em `i18n.locales` no `nuxt.config.ts` e um novo JSON em `i18n/locales/` com as mesmas chaves. Não é preciso alterar rotas nem o seletor.
+- **Adicionar um idioma:** Adicione uma entrada em `i18n.locales` no `nuxt.config.ts` e um novo JSON em `i18n/locales/` com as mesmas chaves. Atualize também o mapeamento/lista de locales em `app/composables/useNuxtUiI18n.ts` e o sitemap público.
 - **Links dentro da app:** Use `localePath('/caminho')` (ou o nome da rota) para os links manterem o locale. Use `switchLocalePath('es')` (ou outro código) para links que trocam de idioma.
-- **SEO:** O layout raiz usa `useLocaleHead` para o idioma do documento e as tags hreflang seguirem o locale ativo. Títulos e descrições usam chaves de tradução para ficarem em sync.
+- **SEO:** `app/app.vue` usa `useLocaleHead` para o idioma do documento e as tags hreflang seguirem o locale ativo. Títulos e descrições usam chaves de tradução para ficarem em sync.
 
 Para uma referência curta que o Cursor possa usar ao trabalhar em i18n neste projeto, veja a skill **nuxt-i18n** abaixo.
 
-## Cursor skills (incluídas neste repo)
+## Assistentes de desenvolvimento
 
-Este repo inclui skills de agente do [Cursor](https://cursor.com/) em `.cursor/skills/`. A IA as usa para trabalho com Nuxt, UI e i18n neste código.
-
-| Skill        | Caminho                    | Propósito |
-|-------------|----------------------------|-----------|
-| **nuxt**    | `.cursor/skills/nuxt/`     | Framework Nuxt: SSR, auto-imports, rotas por arquivo, server routes, `useFetch`, middleware, render híbrido. Usar ao editar config, rotas, data fetching ou deploy. |
-| **nuxt-ui** | `.cursor/skills/nuxt-ui/`  | [@nuxt/ui](https://ui.nuxt.com/) v4: mais de 125 componentes Vue acessíveis, theming Tailwind, formulários, dashboards. Usar ao construir ou personalizar UI, temas ou layouts. |
-| **nuxt-i18n** | (recomendada para i18n)  | [@nuxtjs/i18n](https://i18n.nuxtjs.org/): locales (en, es, pt), rotas por locale, seletor de idioma, SEO por locale, chaves de tradução. Usar ao adicionar ou mudar idiomas, traduzir UI ou links e meta por locale. |
-
-As skills em `.cursor/skills/` são carregadas automaticamente ao abrir o projeto no Cursor; não é necessária configuração extra. Você pode adicionar uma skill **nuxt-i18n** na mesma pasta para mais orientação em i18n.
+[AGENTS.md](AGENTS.md) e o [guia técnico](docs/REPOSITORY_GUIDE.md) oferecem contexto compartilhado ao Codex e Cursor. Claude Code e Gemini CLI importam as mesmas instruções pelos arquivos de entrada. O assistente precisa acessar o repo; estes arquivos não criam um chatbot público.
 
 ## Contribuir
 
