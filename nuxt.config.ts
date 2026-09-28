@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { SITE_URL } from './shared/site'
+
 export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/i18n'],
   image: {
@@ -8,6 +10,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   compatibilityDate: '2025-11-11',
   i18n: {
+    baseUrl: SITE_URL,
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
     locales: [
