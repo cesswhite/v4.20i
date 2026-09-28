@@ -30,7 +30,7 @@ This repo is **i18n-first**. It ships with three locales:
 - **Translations:** `i18n/locales/` — one JSON file per locale (`en.json`, `es.json`, `pt.json`) with the same keys.
 - **Routing:** Default locale has no URL prefix; other locales are prefixed (e.g. `/es/about`, `/pt/about`). First visit can redirect to the browser language; the chosen locale is stored in a cookie.
 - **Links:** Use `localePath('/path')` to keep the current locale; use `switchLocalePath('es')` (or another code) for language switcher links.
-- **SEO:** `app/app.vue` uses `useLocaleHead` for document language and hreflang tags; page titles and descriptions use translation keys.
+- **SEO:** `app/app.vue` uses the Nuxt UI locale for document language/direction and `useLocaleHead` for canonical/hreflang links; page titles and descriptions use translation keys.
 
 ## Features
 
@@ -99,7 +99,7 @@ See [Pinia SSR documentation](https://pinia.vuejs.org/cookbook/composables.html#
 - **Changing language:** Use the language links in the layout header; they point to the same page in another locale.
 - **Adding a new language:** Add an entry to `i18n.locales` in `nuxt.config.ts` and a new JSON file in `i18n/locales/` with the same keys as the others. Also update the Nuxt UI locale mappings/list in `app/composables/useNuxtUiI18n.ts` and the public sitemap.
 - **Links inside the app:** Use `localePath('/path')` (or the route name) so links keep the current locale. Use `switchLocalePath('es')` (or another code) for links that switch locale.
-- **SEO:** `app/app.vue` uses `useLocaleHead` so the document language and hreflang tags follow the active locale. Page titles and descriptions use translation keys so they stay in sync with the locale.
+- **SEO:** `app/app.vue` uses the Nuxt UI locale for document language/direction and `useLocaleHead` for canonical/hreflang links. Page titles and descriptions use translation keys so they stay in sync with the locale.
 
 ## Development assistants
 
