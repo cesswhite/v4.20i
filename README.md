@@ -2,6 +2,8 @@
 
 # v4.20i: Nuxt 4 Starter with i18n
 
+Start with the [repository guide](docs/REPOSITORY_GUIDE.md) for the code map, verified commands, data flows and questions you can ask a development assistant. Shared instructions are in [AGENTS.md](AGENTS.md).
+
 Minimal, fast Nuxt 4 boilerplate with **internationalization (i18n)** built in.  
 **Read this in other languages:** [Español (README.es.md)](README.es.md) · [Português (README.pt.md)](README.pt.md) The app supports **three languages** (English, Spanish, Portuguese) using [@nuxtjs/i18n](https://i18n.nuxtjs.org/). Uses the latest Nuxt releases and stays production-ready whether you keep the project small or scale it.
 
@@ -28,7 +30,7 @@ This repo is **i18n-first**. It ships with three locales:
 - **Translations:** `i18n/locales/` — one JSON file per locale (`en.json`, `es.json`, `pt.json`) with the same keys.
 - **Routing:** Default locale has no URL prefix; other locales are prefixed (e.g. `/es/about`, `/pt/about`). First visit can redirect to the browser language; the chosen locale is stored in a cookie.
 - **Links:** Use `localePath('/path')` to keep the current locale; use `switchLocalePath('es')` (or another code) for language switcher links.
-- **SEO:** The layout uses `useLocaleHead` for document language and hreflang tags; page titles and descriptions use translation keys.
+- **SEO:** `app/app.vue` uses the Nuxt UI locale for document language/direction and `useLocaleHead` for canonical/hreflang links; page titles and descriptions use translation keys.
 
 ## Features
 
@@ -44,45 +46,23 @@ This repo is **i18n-first**. It ships with three locales:
 
 ## Quick Start
 
-**Option 1 – CLI (recommended)**  
-Scaffold a new project without cloning. Requires [Bun](https://bun.sh/) or npm/yarn with `npx`/`yarn dlx`:
+Use Bun and a supported Node runtime (Node 22.12+). Read `package.json` and `bun.lock` for the current dependency versions. Clone this internationalized template directly:
 
 ```sh
-bunx v420
+git clone https://github.com/cesswhite/v4.20i.git
+cd v4.20i
+bun install --frozen-lockfile
+bun run dev
 ```
 
-This runs the v420 CLI (base template) to generate a project in the current directory (or a target path). No git clone or manual dependency install needed.
-
-**Option 2 – Clone and run locally**
-
-### Prerequisites
-
-- **Node.js** ≥ 18.x
-- **Bun** (recommended) or npm/yarn
-
-### Installation
+The development server normally runs at `http://localhost:3000`. Open `/`, `/es` or `/pt` to inspect each locale.
 
 ```sh
-git clone https://github.com/{username}/v.420i.git
-cd v.420i
-bun i
+bun run build
+bun run preview
 ```
 
-### Development
-
-```sh
-bun dev
-```
-
-Dev server runs at `http://localhost:3000` with HMR. Open `/`, `/es`, or `/pt` to see the app in each locale.
-
-### Production build
-
-```sh
-bun build
-```
-
-Output is in `.output`. Serve with `bun run preview` or deploy the generated files to your host.
+The build is written to `.output`. See the [guide](docs/REPOSITORY_GUIDE.md#commands-and-verification) for type checking and locale/SEO checks.
 
 ## Project structure
 
@@ -107,7 +87,7 @@ i18n/
 
 The template ships with a Pinia store set up for **SSR hydration**:
 
-- **Hydration**: Initial state is not serialized; values are read on the client (e.g. from `localStorage`) after hydration.
+- **Hydration**: The name store reconnects its VueUse `useLocalStorage` binding during client hydration; inspect `app/stores/index.ts` for the actual behavior.
 - **SSR**: Safe for server-side rendering with client-only state.
 - **TypeScript**: Uses `@ts-expect-error` where required due to [Pinia typing limitations](https://github.com/vuejs/pinia/issues/2086#issuecomment-1493942501).
 
@@ -117,23 +97,13 @@ See [Pinia SSR documentation](https://pinia.vuejs.org/cookbook/composables.html#
 
 - **Where translations live:** `i18n/locales/` at the project root — one JSON file per locale (`en.json`, `es.json`, `pt.json`) with the same keys.
 - **Changing language:** Use the language links in the layout header; they point to the same page in another locale.
-- **Adding a new language:** Add an entry to `i18n.locales` in `nuxt.config.ts` and a new JSON file in `i18n/locales/` with the same keys as the others. No code changes are required for routing or the switcher.
+- **Adding a new language:** Add an entry to `i18n.locales` in `nuxt.config.ts` and a new JSON file in `i18n/locales/` with the same keys as the others. Also update the Nuxt UI locale mappings/list in `app/composables/useNuxtUiI18n.ts` and the public sitemap.
 - **Links inside the app:** Use `localePath('/path')` (or the route name) so links keep the current locale. Use `switchLocalePath('es')` (or another code) for links that switch locale.
-- **SEO:** The root layout uses `useLocaleHead` so the document language and hreflang tags follow the active locale. Page titles and descriptions use translation keys so they stay in sync with the locale.
+- **SEO:** `app/app.vue` uses the Nuxt UI locale for document language/direction and `useLocaleHead` for canonical/hreflang links. Page titles and descriptions use translation keys so they stay in sync with the locale.
 
-For a short reference that Cursor can use when working on i18n in this project, see the **nuxt-i18n** skill below.
+## Development assistants
 
-## Cursor skills (included in this repo)
-
-This repo ships with [Cursor](https://cursor.com/) agent skills in `.cursor/skills/`. The AI uses them for Nuxt, UI, and i18n work in this codebase.
-
-| Skill        | Path                   | Purpose |
-|-------------|------------------------|---------|
-| **nuxt**    | `.cursor/skills/nuxt/` | Nuxt framework: SSR, auto-imports, file-based routing, server routes, `useFetch`, middleware, hybrid rendering. Use when editing config, routes, data fetching, or deployment. |
-| **nuxt-ui** | `.cursor/skills/nuxt-ui/` | [@nuxt/ui](https://ui.nuxt.com/) v4: 125+ accessible Vue components, Tailwind theming, forms, dashboards. Use when building or customizing UI, themes, or layouts. |
-| **nuxt-i18n** | (recommended for i18n) | [@nuxtjs/i18n](https://i18n.nuxtjs.org/): locales (en, es, pt), locale routing, lang switcher, SEO by locale, translation keys. Use when adding or changing languages, translating UI, or wiring locale-aware links and meta. |
-
-Skills in `.cursor/skills/` are loaded automatically when the project is opened in Cursor; no extra setup is required. You can add a **nuxt-i18n** skill in the same folder for deeper i18n guidance.
+[AGENTS.md](AGENTS.md) and the [repository guide](docs/REPOSITORY_GUIDE.md) provide shared context for Codex and Cursor. Claude Code and Gemini CLI use thin entry files importing the same instructions. No global settings change is required. These files help an assistant that has repository access; they do not create a hosted chat service.
 
 ## Contributing
 
