@@ -27,7 +27,7 @@
             variant="outline"
             @keyup.enter="handleGoToAbout"
           />
-          <UButton block @click="handleGoToAbout" variant="solid" color="primary" size="lg" class="cursor-pointer">
+          <UButton :to="localePath('/about')" block @click.prevent="handleGoToAbout" variant="solid" color="primary" size="lg" class="cursor-pointer">
             {{ $t('home.enter') }}
           </UButton>
         </div>

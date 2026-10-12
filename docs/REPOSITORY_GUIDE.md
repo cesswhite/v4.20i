@@ -36,7 +36,7 @@ Answers should cite implementation files, distinguish evidence from inference, a
 
 ## Flows and boundaries
 
-The home input updates the shared Pinia name. `handleGoToAbout` checks whether it is nonempty, shows a toast and navigates with `localePath('/about')`. The store uses VueUse `useLocalStorage('name', '')` and reattaches that client storage during hydration. This is a local demo value, not an authenticated server identity. Theme preferences also use local storage.
+The home input updates the shared Pinia name. The existing action renders a crawlable link to the localized About route. Its click handler prevents default navigation: `handleGoToAbout` checks whether the name is nonempty, shows a toast and navigates with `localePath('/about')`. With JavaScript disabled, the link opens the public About page directly. The store uses VueUse `useLocalStorage('name', '')` and reattaches that client storage during hydration. This is a local demo value, not an authenticated server identity. Theme preferences also use local storage.
 
 English routes are `/` and `/about`; Spanish routes are `/es` and `/es/about`; Portuguese routes are `/pt` and `/pt/about`. Browser-language detection applies at the root and uses a locale cookie. Nuxt UI has a separate locale mapping, so adding a locale requires reviewing that mapping and switcher list as well as messages/config.
 
